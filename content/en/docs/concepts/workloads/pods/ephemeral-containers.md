@@ -78,20 +78,17 @@ you can view processes in other containers.
 
 ### Kubernetes Ephemeral Container Security
 Attempting to debug a Pod and realizing that you can't install curl due to 
-security settings has to be a meme at this point. Good security practices 
+security settings  at this point. Good security practices 
 are always nice but it often comes at the cost of usability. 
 
 Kubernetes has introduced a  concept called ephemeral containers to deal
-with this problem. Ephemeral containers are temporary containers that can be
-attached after a Pod has been created. You can attach one or more temporary
-container with all the tools you need. While the applications container 
-may have "annoying security features" like a read only file system, an ephemeral 
+with this problem. Ephemeral containers are temporary containers that can be attached after a Pod has been created. You can attach one or more temporary
+container with all the tools you need.  
 container can enjoy all the freedom which writing files entails.
 
 Now that you have the  feature you can start a ephemeral container in any Pod you like  
 
 ```shell
-kubectl run ephemeral-demo --image=k8s.gcr.io/pause:3.1 --restart=Never
 kubectl debug -it ephemeral-demo --image=busybox:1.28
 ```
 
@@ -181,7 +178,7 @@ spec:
 
 Disallowing ephemeral containers with RBAC could be an option if
 the feature is not needed and it is not possible to disable the
-feature completely. The KEP-277: Ephemeral Containers state the
+feature completely. `KEP-277 Ephemeral Containers` state the
 following about using RBAC to disable ephemeral containers.
 
 Cluster administrators will be expected to choose from one of the
